@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>jQuery Summarize Plugin</title>
+<link rel="stylesheet" type="text/css" media="screen" href="../jq.css" />
+<link rel="stylesheet" type="text/css" media="screen" href="../tabs.css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js"></script>
+<script type="text/javascript" src="../jquery.tabs.min.js"></script>
+<script type="text/javascript" src="../jquery.history.pack.js"></script>
+<script type="text/javascript" src="../chili-1.8.js"></script>
+
+<script type="text/javascript">
+
+$(function() {
+    // initialize the tabs
+    var main = $('#main').tabs(1);
+    // $('#subdetails').tabs( { selectedClass: 'sample-tab-selected', bookmarkable: false });
+
+});
+
+</script>
+</head>
+<body>
+<div><a id="logo" href="http://jquery.com" title="Powered By jQuery"></a></div>
+<h1 id="banner"><a id="backnav" href="..">&lsaquo;&lsaquo; home</a>jQuery Summarize Plugin</h1>
+<div id="main">
+  <ul id="nav" class="anchors">
+    <li><a href="#getting-started">Overview</a></li>
+    <li><a href="/summarize/demo/index.html">Demo</a></li>
+    <li><a href="#options">API / Options</a></li>
+    <li><a href="#download">Download &amp; Support</a></li>
+  </ul>
+    <div id="getting-started" class="tabContent">
+        <h1>Overview</h1>
+        <p>The Summarize Plugin allows you to choose a number of "child" elements (e.g. paragraphs) to initially display as a summary, with a "read more" link that reveals the rest of the child elements when clicked.</p>
+        <p>If you like this plugin and you're feeling generous, perhaps you'd also like to visit my <a href="http://www.amazon.com/gp/registry/wishlist/1NLSYA46XTVG4/" title="Amazon.com: Wish List">amazon.com wish list</a>?</p>
+        <h1>Quick Start Guide</h1>
+        
+        <div class="step-one">Add HTML markup to your page for elements that you want to be expandable. For example:</div>
+<pre><code class="xml">
+  &lt;div class=&quot;expandable&quot;&gt;
+    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+     exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor.
+    &lt;/p&gt;
+    &lt;!-- etc.  --&gt;
+  &lt;/div&gt;
+</code></pre>
+        <div class="step-two">Include the <strong>jQuery</strong> core file and the <strong>Summarize</strong> plugin in the <code>&lt;head&gt;</code> of your document. After these scripts are referenced, you can reference a custom script file (preferred) to modify the expandable elements or enter the script directly in the <code>&lt;head&gt;</code> (shown below).</div>
+        <br />
+<pre><code class="mix">&lt;script src="jquery.js" type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="jquery.summarize.js" type="text/javascript"&gt;&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+$(document).ready(function() {
+
+  // simple example, using all default options
+  /***** apply the summarize() method to the "containing" element ****/
+  $('div.expandable').summarize(); 
+    
+});
+&lt;/script&gt;
+
+</code></pre>
+      <p>See <a href="#options">API / Options</a> for more ways to customize the behavior and appearance of the summarize.</p>
+    </div>
+    <div id="demo" class="tabContent"></div>
+    <div id="options" class="tabContent">
+        <h1>Summarize Plugin API / Options</h1>
+        <p>The Summarize Plugin API provides a single method with a few options.</p>
+        <p>This plugin is still in its infancy, so do not hesitate to send bug reports or feature requests to the <a href="groups.google.com/group/jquery-en/">jQuery Google Group</a>.</p>
+        <dl>
+            <dt><code class="method">summarize(options)</code></dt>
+            <dd>Hides child elements after a given number. Lets you expand and collapse those elements.</dd>
+        </dl>
+<pre><code class="mix">$.fn.summarize.defaults = {
+  summaryElements:    1,  // the number of child elements after which a div. 
+  detailClass:        'details', // class of the div that will wrap all elements as specified.
+
+/* expander element */
+  expandText:         'read more...', // text displayed in a link instead of the hidden elements. 
+  expandWrapper:      '&lt;div&gt;&lt;/div&gt;',
+  expandClass:        'expand',
+  expandInsertion:    'insertAfter', // method to use, relative to last summary element. Reasonable choices include 'insertAfter' and 'appendTo'
+
+  expandEffect:       'fadeIn',
+  expandSpeed:        '',   // speed in milliseconds of the animation effect for expanding the text
+  expandCallback:     function() {}, //function to be fired *after* elements are expanded
+
+
+/* collapser element */    
+  collapseText:       'read less...', // allow the user to re-collapse the expanded text.
+                                      // use '' or null if you don't want user to re-collapse
+  collapseWrapper:    '&lt;div&gt;&lt;/div&gt;',
+  collapseClass:      'collapse', 
+  collapseInsertion:  'insertAfter', // method to use, relative to the "details" div containing the initially hidden elements 
+
+  collapseEffect:     'fadeOut',
+  collapseSpeed:      '',
+  collapseCallback:     function() {} //function to be fired *after* elements are collapsed
+
+};
+
+</code></pre>
+    
+    </div>
+
+    <div id="download" class="tabContent">
+        <h1>Download</h1>
+        The Summarize Plugin is available at:
+        <a class="external" href="http://plugins.learningjquery.com/summarize/jquery.summarize.js">http://plugins.learningjquery.com/summarize/jquery.summarize.js</a>.
+        
+        <h1>Support</h1>
+        <p>Support for the Summarize Plugin is available through the
+        <a class="external" href="http://groups.google.com/group/jquery-en/">jQuery Mailing List</a>.  
+        This is a very active list to which many jQuery developers and users subscribe.</p>
+      
+        <div id="footer">
+        This documentation is maintained by Karl Swedberg.  Send comments or questions to karl [at] learningjquery [dot] com.
+        </div>
+    </div>
+</div> <!-- main -->
+
+</body></html>
